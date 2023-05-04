@@ -1,3 +1,4 @@
+
 #include <iostream>
 
 int	main(int ac, char **av)
@@ -8,8 +9,9 @@ int	main(int ac, char **av)
 		{
 			for (int j = 0; av[i][j]; j++)
 				av[i][j] = std::toupper(av[i][j]);
-			std::cout << av[i] << std::endl;
+			std::cout << av[i];
 		}
+		std::cout << std::endl;
 	}
 	else
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
