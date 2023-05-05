@@ -8,7 +8,12 @@
 class Contact 
 {
 	public:
-		void		ft_get_contact_info(void) const;
+		std::string	get_first_name(void) const;
+		std::string	get_last_name(void) const;
+		std::string	get_nickname(void) const;
+		std::string	get_phone_number(void) const;
+		std::string	get_darkest_secret(void) const;
+		int			get_id(void) const;
 
 //		## Constructor and Destructor ##
 		Contact(void);

@@ -1,14 +1,34 @@
 
 #include "Contact.hpp"
 
-void	Contact::ft_get_contact_info(void) const
+std::string	Contact::get_first_name(void) const
 {
-	std::cout << this->_first_name << std::endl;
-	std::cout << this->_last_name << std::endl;
-	std::cout << this->_nickname << std::endl;
-	std::cout << this->_phone_number << std::endl;
-	std::cout << this->_darkest_secret << std::endl;
-	std::cout << this->_id << std::endl;
+	return (this->_first_name);
+}
+
+std::string	Contact::get_last_name(void) const
+{
+	return (this->_last_name);
+}
+
+std::string	Contact::get_nickname(void) const
+{
+	return (this->_nickname);
+}
+
+std::string	Contact::get_phone_number(void) const
+{
+	return (this->_phone_number);
+}
+
+std::string	Contact::get_darkest_secret(void) const
+{
+	return (this->_darkest_secret);
+}
+
+int	Contact::get_id(void) const
+{
+	return (this->_id);
 }
 
 Contact::Contact(void)
@@ -19,6 +39,7 @@ Contact::Contact(void)
 	this->_nickname = "";
 	this->_phone_number = "";
 	this->_darkest_secret = "";
+	this->_id = 0;
 	return ;
 }
 
