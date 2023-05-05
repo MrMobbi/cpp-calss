@@ -8,6 +8,7 @@
 class Contact 
 {
 	public:
+		void		update_contact(std::string f_n, std::string l_n, std::string n_n, std::string p_n, std::string d_s, int id);
 		std::string	get_first_name(void) const;
 		std::string	get_last_name(void) const;
 		std::string	get_nickname(void) const;

@@ -97,7 +97,6 @@ int	main(void)
 		if (parse_prompt(prompt, phone, id) == E_EXIT)
 			break ;
 	}
-	phone.clean_phone_book();
 	std::cout << std::endl;
 	return (0);
 }

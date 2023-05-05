@@ -30,8 +30,6 @@ void	PhoneBook::ft_add(int id)
 	std::string	p_n;
 	std::string	d_s;
 	
-	if (id > 7)
-		delete this->_user[id % 8];
 	std::cout << "Creating Contact number [" << id % 8 + 1 << "]" << std::endl;
 	f_n = PhoneBook::safe_getline_pb("Enter First Name : ");
 	l_n = PhoneBook::safe_getline_pb("Enter Last Name : ");
@@ -39,8 +37,8 @@ void	PhoneBook::ft_add(int id)
 	p_n = PhoneBook::safe_getline_pb("Enter Phone Number : ");
 	d_s = PhoneBook::safe_getline_pb("Enter Darkest Secret : ");
 	
-	this->_user[id % 8] = new Contact(f_n, l_n, n_n, p_n, d_s, id % 8 + 1);
-	this->_nbr_user++;
+	this->_contact[id % 8].update_contact(f_n, l_n, n_n, p_n, d_s, id % 8 + 1);
+	this->_nbr_contact++;
 }
 
 void	PhoneBook::ft_search(void)
@@ -48,8 +46,8 @@ void	PhoneBook::ft_search(void)
 	std::string	prompt;
 	int			index;
 
-	for (int i = 0; i < 8 && i < this->_nbr_user; i++)
-		this->display_contact_semi(this->_user[i]);
+	for (int i = 0; i < 8 && i < this->_nbr_contact; i++)
+		this->display_contact_semi(this->_contact[i]);
 	std::cout << "Which contact you want to see ?" << std::endl;
 	std::cout << "Type a number between 1 and 8 or none if you don't." << std::endl;
 	while (1)
@@ -58,11 +56,11 @@ void	PhoneBook::ft_search(void)
 		index = std::atoi(prompt.c_str());
 		if (index > 0 && index < 9)
 		{
-			if (index > this->_nbr_user)
+			if (index > this->_nbr_contact)
 				std::cout << "Sorry this conctact does not exist." << std::endl;
 			else
 			{
-				this->display_all_info(this->_user[index - 1]);
+				this->display_all_info(this->_contact[index - 1]);
 				break ;
 			}
 		}
@@ -74,26 +72,26 @@ void	PhoneBook::ft_search(void)
 	std::cout << std::endl << "Back in the the main Menu ->" << std::endl;
 }
 
-void	PhoneBook::display_contact_semi(Contact *user) const
+void	PhoneBook::display_contact_semi(Contact &contact) const
 {
-	std::cout << "[" << user->get_id();
+	std::cout << "[" << contact.get_id();
 	std::cout << "]|[";
-	this->display_in_format(user->get_first_name());
+	this->display_in_format(contact.get_first_name());
 	std::cout << "]|[";
-	this->display_in_format(user->get_last_name());
+	this->display_in_format(contact.get_last_name());
 	std::cout << "]|[";
-	this->display_in_format(user->get_nickname());
+	this->display_in_format(contact.get_nickname());
 	std::cout << "]" << std::endl; 
 }
 
-void	PhoneBook::display_all_info(Contact *user) const
+void	PhoneBook::display_all_info(Contact &contact) const
 {
-	std::cout << std::endl << "Info of Contact Number [" << user->get_id() << "]" << std::endl;
-	std::cout << "First Name : " << user->get_first_name() << std::endl;
-	std::cout << "Last Name : " << user->get_last_name() << std::endl;
-	std::cout << "Nickname : " << user->get_nickname() << std::endl;
-	std::cout << "Phone Number : " << user->get_phone_number() << std::endl;
-	std::cout << "Darkest Secret : " << user->get_darkest_secret() << std::endl;
+	std::cout << std::endl << "Info of Contact Number [" << contact.get_id() << "]" << std::endl;
+	std::cout << "First Name : " << contact.get_first_name() << std::endl;
+	std::cout << "Last Name : " << contact.get_last_name() << std::endl;
+	std::cout << "Nickname : " << contact.get_nickname() << std::endl;
+	std::cout << "Phone Number : " << contact.get_phone_number() << std::endl;
+	std::cout << "Darkest Secret : " << contact.get_darkest_secret() << std::endl;
 }
 
 void	PhoneBook::display_in_format(std::string info) const
@@ -122,16 +120,10 @@ void	PhoneBook::display_in_format(std::string info) const
 	}
 }
 
-void	PhoneBook::clean_phone_book(void)
-{
-	for (int i = 0; i < 8 && i < this->_nbr_user; i++)
-		delete this->_user[i];
-}
-
 PhoneBook::PhoneBook(void)
 {
 	std::cout << "Constructor of PhoneBook called" << std::endl;
-	this->_nbr_user = 0;
+	this->_nbr_contact = 0;
 	return ;
 }
 

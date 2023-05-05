@@ -1,6 +1,16 @@
 
 #include "Contact.hpp"
 
+void	Contact::update_contact(std::string f_n, std::string l_n, std::string n_n, std::string p_n, std::string d_s, int id)
+{
+	this->_first_name = f_n;	
+	this->_last_name = l_n;	
+	this->_nickname = n_n;	
+	this->_phone_number = p_n;	
+	this->_darkest_secret = d_s;	
+	this->_id = id;	
+}
+
 std::string	Contact::get_first_name(void) const
 {
 	return (this->_first_name);
