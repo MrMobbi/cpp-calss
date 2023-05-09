@@ -1,10 +1,9 @@
 
-NAME		= brainzzzz
+NAME		= phonebook
 
 SRCS		= main.cpp\
-			  Zombie.cpp\
-			  randomChump.cpp\
-			  newZombie.cpp
+			  PhoneBook.cpp\
+			  Contact.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
