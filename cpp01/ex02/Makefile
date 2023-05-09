@@ -1,9 +1,7 @@
 
-NAME		= phonebook
+NAME		= pointer
 
 SRCS		= main.cpp\
-			  PhoneBook.cpp\
-			  Contact.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
