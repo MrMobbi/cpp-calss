@@ -59,7 +59,7 @@ bool	Account::makeWithdrawal(int withdrawal)
 {
 	Account::_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex << ";";
-	std::cout << "p_amout:" << this->_amount << ";";
+	std::cout << "p_amount:" << this->_amount << ";";
 	std::cout << "withdrawal:";
 	if (this->_amount >= withdrawal)
 	{
@@ -68,7 +68,7 @@ bool	Account::makeWithdrawal(int withdrawal)
 		_totalAmount -= withdrawal;
 		this->_nbWithdrawals++;
 		_totalNbWithdrawals++;
-		std::cout << "p_amout:" << this->_amount << ";";
+		std::cout << "amount:" << this->_amount << ";";
 		std::cout << "nb_withdrawals:" << this->_nbWithdrawals << ";";
 		std::cout << std::endl;
 		return (false);
@@ -107,7 +107,7 @@ Account::Account(int initial_deposit)
 	this->_nbWithdrawals = 0;
 	Account::_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex << ";";
-	std::cout << "amout:" << this->_amount << ";";
+	std::cout << "amount:" << this->_amount << ";";
 	std::cout << "created" << std::endl;
 }
 
@@ -129,11 +129,11 @@ Account::~Account(void)
 
 void Account::_displayTimestamp(void)
 {
-	time_t		now;
+	time_t		now = time(0);
 	struct tm	*time = localtime(&now);
 
 	std::cout << "[";
-	std::cout << 1900 + time->tm_year;	// +1900 because it's years since 1900
+	std::cout << 1900 + time->tm_year; // +1900 because it's years since 1900
 	if (time->tm_mon + 1 < 10) // +1 because it's month grom 0 to 11
 		std::cout << "0" << 1 + time->tm_mon;
 	else
