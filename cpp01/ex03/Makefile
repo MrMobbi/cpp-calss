@@ -1,9 +1,10 @@
 
-NAME		= phonebook
+NAME		= love_violence
 
 SRCS		= main.cpp\
-			  PhoneBook.cpp\
-			  Contact.cpp
+			  Weapon.cpp\
+			  HumanA.cpp\
+			  HumanB.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
