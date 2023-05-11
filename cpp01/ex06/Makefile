@@ -1,9 +1,8 @@
 
-NAME		= phonebook
+NAME		= harl_filter
 
 SRCS		= main.cpp\
-			  PhoneBook.cpp\
-			  Contact.cpp
+			  harl.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
