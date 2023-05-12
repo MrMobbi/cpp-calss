@@ -8,7 +8,7 @@ void	Zombie::annonce(void) const
 
 Zombie::Zombie(void)
 {
-	std::cout "Zombie is born." << std::endl;
+	std::cout << "Zombie is born." << std::endl;
 }
 
 Zombie::Zombie(std::string name)

@@ -1,7 +1,7 @@
 
 #include "Weapon.hpp"
 
-std::string	Weapon::get_type(void) const
+const std::string	&Weapon::get_type(void) const
 {
 	return (this->_type);
 }
