@@ -3,13 +3,13 @@
 
 int	main(void)
 {
-	fixed	a;
-	fixed	b(a);
-	fixed	c;
+	Fixed	a;
+	Fixed	b(a);
+	Fixed	c;
 
 	c = a;
-	std::cout << a.get_raw_bits() << std::endl;
-	std::cout << b.get_raw_bits() << std::endl;
-	std::cout << c.get_raw_bits() << std::endl;
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
 	return (0);
 }
