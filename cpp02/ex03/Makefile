@@ -1,8 +1,10 @@
 
-NAME		= harl_filter
+NAME		= bsp
 
 SRCS		= main.cpp\
-			  harl.cpp
+			  Point.cpp\
+			  Fixed.cpp\
+			  bsp.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
