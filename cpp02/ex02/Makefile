@@ -1,8 +1,8 @@
 
-NAME		= harl_filter
+NAME		= idk
 
 SRCS		= main.cpp\
-			  harl.cpp
+			  Fixed.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
