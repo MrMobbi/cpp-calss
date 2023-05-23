@@ -4,9 +4,14 @@
 
 int	main(void)
 {
-	Point	a(1,2);
-	Point	b = a;
+	Point	a(0,0);
+	Point	b(10, 30);
+	Point	c(20, 0);
+	Point	p(1, 0);
 
-	std::cout << std::endl;
+	if (bsp(a, b, c, p) == true)
+		std::cout << "Point inside" << std::endl;
+	else
+		std::cout << "Point outside" << std::endl;
 	return (0);
 }
