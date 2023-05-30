@@ -34,5 +34,8 @@ int main(void)
 	std::cout << player1.get_ep() << std::endl;
 	player1.high_five_guys();
 	std::cout << player1.get_ep() << std::endl;
+	player1.attack("truck");
+	std::cout << player1.get_ep() << std::endl;
+	player1.show_stat();
 	return (0);
 }

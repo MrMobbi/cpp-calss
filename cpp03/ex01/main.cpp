@@ -26,7 +26,7 @@ std::string	safe_getline(std::string line)
 int main(void)
 {
 	std::cout << "#####" << std::endl;
-	ScavTrap	player1;
+	ScavTrap	player1("steve");
 
 	std::cout << player1.get_name() << std::endl;
 
@@ -36,5 +36,10 @@ int main(void)
 	std::cout << player1.get_ep() << std::endl;
 	player1.guard_gate();
 	std::cout << player1.get_ep() << std::endl;
+	player1.take_damage(0);
+	std::cout << player1.get_ep() << std::endl;
+	player1.be_repaired(1);
+	std::cout << player1.get_ep() << std::endl;
+	player1.show_stat();
 	return (0);
 }

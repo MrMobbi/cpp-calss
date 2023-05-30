@@ -15,6 +15,7 @@ class FragTrap : public ClapTrap
 		~FragTrap(void);
 
 		void	high_five_guys(void);
+		void	show_stat(void) const;
 };
 
 #endif

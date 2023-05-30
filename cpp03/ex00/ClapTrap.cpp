@@ -63,7 +63,7 @@ void	ClapTrap::be_repaired(unsigned int amount)
 {
 	if (this->_ep > 0)
 	{
-		std::cout << "ClapTrap " << this->_name << "have been repaied of " << amount
+		std::cout << "ClapTrap " << this->_name << " have been repaied of " << amount
 		<< " points!" << std::endl;
 		this->_hp += amount;
 		this->_ep--;

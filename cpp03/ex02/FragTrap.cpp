@@ -55,3 +55,11 @@ void	FragTrap::high_five_guys(void)
 	this->_ep--;
 	std::cout << "FragTrap " << this->_name << " give you the best high five of history" << std::endl;	
 }
+
+void	FragTrap::show_stat(void) const
+{
+	std::cout << "SvacTrap name : " << this->_name << std::endl;
+	std::cout << "SvacTrap Hit Point : " << this->_hp << std::endl;
+	std::cout << "SvacTrap Energy Point : " << this->_ep << std::endl;
+	std::cout << "SvacTrap Attack damage : " << this->_ad << std::endl;
+}

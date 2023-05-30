@@ -9,7 +9,7 @@ ScavTrap::ScavTrap(void) : ClapTrap()
 	this->_hp = 100;
 	this->_ep = 50;
 	this->_ad = 20;
-	this->_guard_mode = 0;
+	this->_guard_mode = false;
 	std::cout << "ScavTrap " << this->_name << " has join the battle" << std::endl;
 }
 
@@ -18,7 +18,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	this->_hp = 100;
 	this->_ep = 50;
 	this->_ad = 20;
-	this->_guard_mode = 0;
+	this->_guard_mode = false;
 	std::cout << "ScavTrap " << this->_name << " has join the battle" << std::endl;
 }
 
@@ -69,10 +69,10 @@ void	ScavTrap::attack(const std::string target)
 
 void	ScavTrap::guard_gate(void)
 {
-	if (this->_guard_mode == 0)
+	if (this->_guard_mode == false)
 	{
 		std::cout << "ScavTrap " << this->_name << " is on Gate keeper Mode" << std::endl;
-		this->_guard_mode = 1;
+		this->_guard_mode = true;
 		this->_ep--;
 	}
 	else
