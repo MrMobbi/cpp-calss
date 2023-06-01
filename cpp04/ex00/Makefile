@@ -4,7 +4,9 @@ NAME		= exec
 SRCS		= main.cpp\
 			  Animal.cpp\
 			  Dog.cpp\
-			  Cat.cpp
+			  Cat.cpp\
+			  WrongAnimal.cpp\
+			  WrongCat.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 

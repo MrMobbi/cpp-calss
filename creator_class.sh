@@ -19,8 +19,8 @@ class $1
 	public :
 		$1(void);
 		$1($1 &t);
-		$1(void);
-		$1 &operator = ($1 &t);
+		$1 &operator = (const $1 &t);
+		~$1::$1(void);
 };
 
 #endif" >> $1.hpp
