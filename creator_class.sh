@@ -32,7 +32,7 @@ echo "
 
 $1::$1(void)
 {
-	std::cout << \"Default constructor of $1 called\" << std::endl;
+	std::cout << \"Constructor of $1 called\" << std::endl;
 }
 
 $1::$1($1 &t)
