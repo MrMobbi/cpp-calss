@@ -2,11 +2,15 @@
 NAME		= exec
 
 SRCS		= main.cpp\
-			  ClapTrap.cpp
+			  Ice.cpp\
+			  Cure.cpp\
+			  Character.cpp\
+			  AMateria.cpp\
+			  MateriaSource.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
-CC			= c++ -g #-fsanitize=address
+CC			= c++ #-g -fsanitize=address
 
 CPPFLAGS	= -Wall -Werror -Wextra -std=c++98
 
