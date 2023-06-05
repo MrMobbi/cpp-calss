@@ -18,9 +18,9 @@ class $1
 {
 	public :
 		$1(void);
-		$1($1 &t);
+		$1(const $1 &t);
 		$1 &operator = (const $1 &t);
-		~$1::$1(void);
+		~$1(void);
 };
 
 #endif" >> $1.hpp
@@ -35,7 +35,7 @@ $1::$1(void)
 	std::cout << \"Constructor of $1 called\" << std::endl;
 }
 
-$1::$1($1 &t)
+$1::$1(const $1 &t)
 {
 	(void) t;
 	std::cout << \"Copy constructor of $1 called\" << std::endl;
