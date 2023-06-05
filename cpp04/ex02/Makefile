@@ -2,7 +2,12 @@
 NAME		= exec
 
 SRCS		= main.cpp\
-			  ClapTrap.cpp
+			  AAnimal.cpp\
+			  Dog.cpp\
+			  Cat.cpp\
+			  WrongAnimal.cpp\
+			  WrongCat.cpp\
+			  Brain.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
