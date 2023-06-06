@@ -9,8 +9,9 @@ Dog::Dog(void) : _brain(new Brain())
 	std::cout << "Constructor of a Dog have been called" << std::endl;	
 }
 
-Dog::Dog(Dog &t) : _brain(t._brain)
+Dog::Dog(Dog &t)
 {
+	this->_brain = new Brain(*t._brain);
 	Animal::_type = t._type;
 	std::cout << "Constructor Copy of a Dog have been called" << std::endl;	
 }
@@ -20,7 +21,8 @@ Dog::Dog(Dog &t) : _brain(t._brain)
 Dog &Dog::operator = (const Dog &t)
 {
 	this->_type = t._type;
-	this->_brain = t._brain;
+	delete (this->_brain);
+	this->_brain = new Brain(*t._brain);
 	return (*this);
 	std::cout << "Copy Assigment of a Dog have been called" << std::endl;	
 }
@@ -29,11 +31,16 @@ Dog &Dog::operator = (const Dog &t)
 
 Dog::~Dog(void)
 {
-	delete(_brain);
+	delete(this->_brain);
 	std::cout << "Destructor of a Dog have been called" << std::endl;
 }
 
 //	### Member Function ###
+
+void	Dog::make_sound(void) const
+{
+	std::cout << "*Wouaf*" << std::endl;
+}
 
 void	Dog::new_idea(std::string idea) const
 {

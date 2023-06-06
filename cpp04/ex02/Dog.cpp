@@ -9,7 +9,7 @@ Dog::Dog(void) : _brain(new Brain())
 	std::cout << "Constructor of a Dog have been called" << std::endl;	
 }
 
-Dog::Dog(Dog &t) : _brain(t._brain)
+Dog::Dog(Dog &t) : _brain(new Brain(*t._brain))
 {
 	AAnimal::_type = t._type;
 	std::cout << "Constructor Copy of a Dog have been called" << std::endl;	
@@ -20,7 +20,8 @@ Dog::Dog(Dog &t) : _brain(t._brain)
 Dog &Dog::operator = (const Dog &t)
 {
 	this->_type = t._type;
-	this->_brain = t._brain;
+	delete (this->_brain);
+	this->_brain = new Brain(*t._brain);
 	return (*this);
 	std::cout << "Copy Assigment of a Dog have been called" << std::endl;	
 }

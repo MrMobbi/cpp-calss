@@ -30,3 +30,8 @@ Dog::~Dog(void)
 {
 	std::cout << "Destructor of a Dog have been called" << std::endl;
 }
+
+void	Dog::make_sound(void) const
+{
+	std::cout << "*Wouaf*" << std::endl;
+}

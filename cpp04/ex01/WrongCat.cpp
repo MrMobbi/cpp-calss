@@ -30,3 +30,8 @@ WrongCat::~WrongCat(void)
 {
 	std::cout << "Destructor of WrongCat called" << std::endl;
 }
+
+void	WrongCat::make_sound(void) const
+{
+	std::cout << "that a strange *miaou*" << std::endl;
+}

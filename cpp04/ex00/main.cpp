@@ -41,6 +41,7 @@ int	main(void)
 	delete(meta);
 	delete(steve);
 	delete(stuart);
+	std::cout << std::endl;
 	delete(test1);
 	delete(test2);
 	return (0);

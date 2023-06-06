@@ -5,10 +5,9 @@
 # include <iostream>
 # include "AMateria.hpp"
 
-class Character
+class Character : public ICharacter
 {
 	public :
-		Character(void);
 		Character(std::string name);
 		Character(Character &t);
 		Character &operator = (const Character &t);
@@ -18,9 +17,13 @@ class Character
 		virtual void				equip(AMateria *m);
 		virtual void				unequip(int idx);
 		virtual void				use(int idx, ICharacter &target);
+		void						handle_lost(void);
+		void						show_inventory(void) const;
 	private :
-		AMateria	*_inventory[4];
 		std::string	_name;
+		AMateria	*_lost;
+		AMateria	*_inventory[4];
+		Character(void);
 };
 
 #endif

@@ -9,8 +9,9 @@ Cat::Cat(void) : _brain(new Brain())
 	std::cout << "Constructor of a Cat have been called" << std::endl;	
 }
 
-Cat::Cat(Cat &t) : _brain(t._brain)
+Cat::Cat(Cat &t)
 {
+	this->_brain = new Brain(*t._brain);
 	Animal::_type = t._type;
 	std::cout << "Constructor Copy of a Cat have been called" << std::endl;	
 }
@@ -20,7 +21,8 @@ Cat::Cat(Cat &t) : _brain(t._brain)
 Cat &Cat::operator = (const Cat &t)
 {
 	this->_type = t._type;
-	this->_brain = t._brain;
+	delete(this->_brain);
+	this->_brain = new Brain(*t._brain);
 	return (*this);
 	std::cout << "Copy Assigment of a Cat have been called" << std::endl;	
 }
@@ -29,11 +31,16 @@ Cat &Cat::operator = (const Cat &t)
 
 Cat::~Cat(void)
 {
-	delete(_brain);
+	delete(this->_brain);
 	std::cout << "Destructor of a Cat have been called" << std::endl;
 }
 
 //	### Member Function ###
+
+void	Cat::make_sound(void) const
+{
+	std::cout << "*Miaou*" << std::endl;
+}
 
 void	Cat::new_idea(std::string idea) const
 {

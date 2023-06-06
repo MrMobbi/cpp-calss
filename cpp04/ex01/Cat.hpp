@@ -13,6 +13,7 @@ class Cat : public Animal
 		Cat &operator = (const Cat &t);
 		virtual ~Cat(void);
 		
+		virtual void	make_sound(void) const;
 		void	new_idea(std::string idea) const;
 		void	print_idea(int nb) const;
 	private :

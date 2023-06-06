@@ -33,10 +33,7 @@ WrongAnimal::~WrongAnimal(void)
 
 void	WrongAnimal::make_sound(void) const
 {
-	if (this->_type == "None")
-		std::cout << "*Wrong Inaudible sound*" << std::endl;
-	else if (this->_type == "WrongCat")
-		std::cout << "That a strange *Meow*" << std::endl;
+	std::cout << "*Wrong Inaudible sound*" << std::endl;
 }
 
 std::string	WrongAnimal::get_type(void) const
