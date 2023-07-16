@@ -1,0 +1,32 @@
+
+
+NAME		= bureaucrate
+
+SRCS		= main.cpp \
+			  Bureaucrate.cpp
+
+OBJS		= $(SRCS:.cpp=.o)
+
+CC			= g++
+
+CPPFLAGS	= -Wall -Werror -Wextra -std=c++98
+
+EXE_NAME	= -o $(NAME)
+
+all:		$(NAME)
+
+$(NAME):	$(OBJS)
+			$(CC) $(CPPFLAGS) $(OBJS) $(EXE_NAME)
+
+clean:
+			rm -rf $(OBJS)
+	
+fclean:		clean
+			rm -rf $(NAME)
+
+re:			fclean all
+
+.cpp.o:
+			$(CC) $(CPPFLAGS) -c $< -o $(<:.cpp=.o)
+
+.PHONY:		all clean fclean re
