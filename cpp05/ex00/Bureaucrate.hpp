@@ -35,8 +35,10 @@ class Bureaucrate
 		Bureaucrate(void);
 		Bureaucrate &operator = (const Bureaucrate &t);
 
-		std::string	_name;
-		int			_grade;
+		const std::string	_name;
+		int					_grade;
 };
+
+std::ostream &operator << (std::ostream &out, const Bureaucrate &t);
 
 #endif

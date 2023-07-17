@@ -59,35 +59,53 @@ int	main(int ac, char **av)
 		return (0);
 	}
 
-	Bureaucrate	gile(safe_getline("Enter the Name of the bureaucrate :"), safe_getline_atoi());
-	std::cout << "Bureaucrate Name : " << gile.getName();
-	std::cout << ", Bureaucrate Rank : " << gile.getGrade() << std::endl;
-
-	std::cout << "Type '+' or '-' to move the grade of the bureaucrate" << std::endl;
-	std::cout << "Type 'info' to get the rank of the bureaucrate" << std::endl;
-	std::cout << "Type 'exit' to quit" << std::endl;
-
-	std::string	prompt;
-	while (1)
+	try
 	{
-		prompt = safe_getline("$> ");
-		if (prompt == "+")
+		Bureaucrate	gile(safe_getline("Enter the Name of the bureaucrate :"), safe_getline_atoi());
+		Bureaucrate	robert(gile);
+	
+		std::cout << robert << std::endl;
+		std::cout << "Type '+' or '-' to move the grade of the bureaucrate" << std::endl;
+		std::cout << "Type 'info' to get the rank of the bureaucrate" << std::endl;
+		std::cout << "Type 'exit' to quit" << std::endl;
+	
+		std::string	prompt;
+		while (1)
 		{
-			gile.gradeUp();
-			std::cout << "New grade is [" << gile.getGrade() << "]" << std::endl;
+			prompt = safe_getline("$> ");
+			if (prompt == "+")
+			{
+				try
+				{
+					gile.gradeUp();
+				}
+				catch (std::exception &e)
+				{
+					std::cout << e.what() << std::endl;
+				}
+				std::cout << "New grade is [" << gile.getGrade() << "]" << std::endl;
+			}
+			else if (prompt == "-")
+			{
+				try
+				{
+					gile.gradeDown();
+				}
+				catch (std::exception &e)
+				{
+					std::cout << e.what() << std::endl;
+				}
+				std::cout << "New grade is [" << gile.getGrade() << "]" << std::endl;
+			}
+			else if (prompt == "info")
+				std::cout << gile << std::endl;
+			else if (prompt == "exit")
+				break ;
 		}
-		else if (prompt == "-")
-		{
-			gile.gradeDown();
-			std::cout << "New grade is [" << gile.getGrade() << "]" << std::endl;
-		}
-		else if (prompt == "info")
-		{
-			std::cout << "Bureaucrate Name : " << gile.getName();
-			std::cout << ", Bureaucrate Rank : " << gile.getGrade() << std::endl;
-		}
-		else if (prompt == "exit")
-			break ;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
 	}
 	return (0);
 }
