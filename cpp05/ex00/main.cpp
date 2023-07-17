@@ -4,11 +4,11 @@
 #include <string>
 #include "Bureaucrate.hpp"
 
-std::string	safe_getline(void)
+std::string	safe_getline(std::string line)
 {
 	std::string	tmp;
 
-	std::cout << "Enter the Name of the bureaucrate." << std::endl;
+	std::cout << line;
 	while (1)
 	{
 		std::getline(std::cin, tmp);
@@ -31,7 +31,7 @@ int	safe_getline_atoi(void)
 	const char	*str;
 	int			nb;
 
-	std::cout << "Enter the grade of the bureaucrate." << std::endl;
+	std::cout << "Enter the grade of the bureaucrate :";
 	while (1)
 	{
 		std::getline(std::cin, tmp);
@@ -59,9 +59,35 @@ int	main(int ac, char **av)
 		return (0);
 	}
 
-	Bureaucrate	gile(safe_getline(), safe_getline_atoi());
-	std::cout << "Hello, World!" << std::endl;
+	Bureaucrate	gile(safe_getline("Enter the Name of the bureaucrate :"), safe_getline_atoi());
 	std::cout << "Bureaucrate Name : " << gile.getName();
 	std::cout << ", Bureaucrate Rank : " << gile.getGrade() << std::endl;
+
+	std::cout << "Type '+' or '-' to move the grade of the bureaucrate" << std::endl;
+	std::cout << "Type 'info' to get the rank of the bureaucrate" << std::endl;
+	std::cout << "Type 'exit' to quit" << std::endl;
+
+	std::string	prompt;
+	while (1)
+	{
+		prompt = safe_getline("$> ");
+		if (prompt == "+")
+		{
+			gile.gradeUp();
+			std::cout << "New grade is [" << gile.getGrade() << "]" << std::endl;
+		}
+		else if (prompt == "-")
+		{
+			gile.gradeDown();
+			std::cout << "New grade is [" << gile.getGrade() << "]" << std::endl;
+		}
+		else if (prompt == "info")
+		{
+			std::cout << "Bureaucrate Name : " << gile.getName();
+			std::cout << ", Bureaucrate Rank : " << gile.getGrade() << std::endl;
+		}
+		else if (prompt == "exit")
+			break ;
+	}
 	return (0);
 }
