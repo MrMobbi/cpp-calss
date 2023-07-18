@@ -55,24 +55,46 @@ int	Form::getGradeToExec(void) const
 	return (this->_to_exec);
 }
 
-std::string	Form::getSigned(void) const
+void	Form::beSigned(Bureaucrate *gile)
 {
-	if (this->_signed == false)
-		return ("Form is not signed");
+	if (this->_signed == true)
+		std::cout << "Form already signed" << std::endl;
+	else if (gile->getGrade() > this->_to_sign)
+	{
+		throw(Form::GradeTooLowException());
+		this->_gile = gile;
+	}
+	else 
+	{
+		this->_gile = gile;
+		this->_signed = true;
+		std::cout << "Form succsefully signed" << std::endl;
+	}
+}
+
+void	Form::signForm(void) const
+{
+	if (this->_gile != NULL && this->_signed == false)
+	{
+		std::cout << this->_gile->getName() << " couldn't sign " << Form::getName();
+		std::cout << " beacuse grade of the bureaucrate was too low" << std::endl;
+	}
+	else if (this->_signed == true)
+		std::cout << this->_gile->getName() << " signed " << Form::getName() << std::endl;
 	else
-		return ("Form have been signed");
+		std::cout << "Form have not been seen yet" << std::endl;
 }
 
 //	### Exception Member ###
 
 const char	*Form::GradeTooHighException::what(void) const throw()
 {
-	return ("Form : Grade too High, cannot go upper than 1");
+	return ("Form : Grade too High");
 }
 
 const char	*Form::GradeTooLowException::what(void) const throw()
 {
-	return ("Form : Grade too Low, cannot go under 150");
+	return ("Form : Grade too Low");
 }
 
 //	### Overloar Operator '<<' ###

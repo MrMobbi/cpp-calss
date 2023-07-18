@@ -20,7 +20,9 @@ class Form
 		const std::string	getName(void) const;
 		int					getGradeToSign(void) const;
 		int					getGradeToExec(void) const;
-		std::string			getSigned(void) const;
+
+		void				beSigned(Bureaucrate *gile);
+		void				signForm(void) const;
 
 		class	GradeTooHighException : public std::exception
 		{
@@ -40,6 +42,7 @@ class Form
 		const int			_to_sign;
 		const int			_to_exec;
 		bool				_signed;
+		Bureaucrate			*_gile;
 
 };
 
