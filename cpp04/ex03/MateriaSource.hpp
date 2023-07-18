@@ -18,7 +18,7 @@ class MateriaSource : public IMateriaSource
 
 		virtual void		learn_materia(AMateria *m);
 		virtual	AMateria	*create_materia(std::string const &type);
-		void				show_stock(void) const;		
+		void				show_stock(void) const;	
 	private :
 		AMateria *_stock[4];
 };
