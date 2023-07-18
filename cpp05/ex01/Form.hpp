@@ -8,7 +8,7 @@
 # include <exception>
 # include <ostream>
 
-class Bureaucrate;
+class Bureaucrat;
 
 class Form
 {
@@ -21,8 +21,7 @@ class Form
 		int					getGradeToSign(void) const;
 		int					getGradeToExec(void) const;
 
-		void				beSigned(Bureaucrate *gile);
-		void				signForm(void) const;
+		void				beSigned(Bureaucrat gile);
 
 		class	GradeTooHighException : public std::exception
 		{
@@ -42,8 +41,6 @@ class Form
 		const int			_to_sign;
 		const int			_to_exec;
 		bool				_signed;
-		Bureaucrate			*_gile;
-
 };
 
 std::ostream &operator << (std::ostream &out, const Form &t);

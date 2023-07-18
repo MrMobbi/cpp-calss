@@ -8,12 +8,12 @@
 # include <exception>
 # include <ostream>
 
-class Bureaucrate
+class Bureaucrat
 {
 	public :
-		Bureaucrate(std::string name, int grade);
-		Bureaucrate(const Bureaucrate &t);
-		~Bureaucrate(void);
+		Bureaucrat(std::string name, int grade);
+		Bureaucrat(const Bureaucrat &t);
+		~Bureaucrat(void);
 
 		std::string	getName(void) const;
 		int			getGrade(void) const;
@@ -32,13 +32,13 @@ class Bureaucrate
 		};
 
 	private :
-		Bureaucrate(void);
-		Bureaucrate &operator = (const Bureaucrate &t);
+		Bureaucrat(void);
+		Bureaucrat &operator = (const Bureaucrat &t);
 
 		const std::string	_name;
 		int					_grade;
 };
 
-std::ostream &operator << (std::ostream &out, const Bureaucrate &t);
+std::ostream &operator << (std::ostream &out, const Bureaucrat &t);
 
 #endif

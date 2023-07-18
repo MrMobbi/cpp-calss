@@ -3,11 +3,15 @@
 NAME		= bureaucrate
 
 SRCS		= main.cpp \
-			  Bureaucrate.cpp
+			  Bureaucrat.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
-CC			= g++
+ifeq ($(shell uname), Linux)
+ CC			= g++
+else
+ CC			= c++
+endif
 
 CPPFLAGS	= -Wall -Werror -Wextra -std=c++98
 

@@ -1,12 +1,12 @@
 
 #include "Form.hpp"
-#include "Bureaucrate.hpp"
+#include "Bureaucrat.hpp"
 
 //	### Constructor ###
 
-Form::Form(void) : _name("") , _to_sign(0), _to_exec(0), _signed(false) {} 
+Form::Form(void) : _name("") , _to_sign(0), _to_exec(0), _signed(false) ,_gile(NULL){} 
 
-Form::Form(std::string name, int to_sign, int to_exec) : _name(name), _to_sign(to_sign), _to_exec(to_exec), _signed(false)
+Form::Form(std::string name, int to_sign, int to_exec) : _name(name), _to_sign(to_sign), _to_exec(to_exec), _signed(false), _gile(NULL)
 {
 	if (to_sign <= 0 || to_exec <= 0)
 		throw (Form::GradeTooHighException());
@@ -55,34 +55,8 @@ int	Form::getGradeToExec(void) const
 	return (this->_to_exec);
 }
 
-void	Form::beSigned(Bureaucrate *gile)
+void	Form::beSigned(Bureaucrat *gile)
 {
-	if (this->_signed == true)
-		std::cout << "Form already signed" << std::endl;
-	else if (gile->getGrade() > this->_to_sign)
-	{
-		throw(Form::GradeTooLowException());
-		this->_gile = gile;
-	}
-	else 
-	{
-		this->_gile = gile;
-		this->_signed = true;
-		std::cout << "Form succsefully signed" << std::endl;
-	}
-}
-
-void	Form::signForm(void) const
-{
-	if (this->_gile != NULL && this->_signed == false)
-	{
-		std::cout << this->_gile->getName() << " couldn't sign " << Form::getName();
-		std::cout << " beacuse grade of the bureaucrate was too low" << std::endl;
-	}
-	else if (this->_signed == true)
-		std::cout << this->_gile->getName() << " signed " << Form::getName() << std::endl;
-	else
-		std::cout << "Form have not been seen yet" << std::endl;
 }
 
 //	### Exception Member ###

@@ -3,11 +3,11 @@
 #include <cstdlib>
 #include <string>
 #include <exception>
-#include "Bureaucrate.hpp"
+#include "Bureaucrat.hpp"
 #include "Form.hpp"
 
 #define MSG_NAME_BUR "Enter the Name of the bureaucrate : "
-#define MSG_GRADE_BUR "Enter the Grade of the Bureaucrate : "
+#define MSG_GRADE_BUR "Enter the Grade of the Bureaucrat : "
 #define MSG_NAME_FORM "Enter Name of the Form : "
 #define MSG_SIGN_FORM "Enter the Grade to sign the form : "
 #define MSG_EXEC_FORM "Enter the Grade to execute the form : "
@@ -68,20 +68,27 @@ int	main(int ac, char **av)
 	}
 	try
 	{
-		//	# Creating Bureaucrate and testing Overload operator
-		Bureaucrate	bur1(safe_getline(MSG_NAME_BUR), gnl_atoi(MSG_GRADE_BUR));
-		Bureaucrate	bur2(bur1);
+		std::cout << std::endl;
+		std::cout << "### Creating class ###" << std::endl;
+		std::cout << std::endl;
+		//	# Creating Bureaucrat and testing Overload operator
+		Bureaucrat	bur1(safe_getline(MSG_NAME_BUR), gnl_atoi(MSG_GRADE_BUR));
+		Bureaucrat	bur2(bur1);
 		std::cout << bur2 << std::endl;
 
 		//	# Creating Form and testing Overload operator
 		Form	form1(safe_getline(MSG_NAME_FORM), gnl_atoi(MSG_SIGN_FORM), gnl_atoi(MSG_EXEC_FORM));
-		std::cout << form1 << std::endl;
+		Form	form2(form1);
+		std::cout << form2 << std::endl;
 
 		std::cout << std::endl;
-		std::cout << "### End of Creating class ###" << std::endl;
+		std::cout << "### Starting test of Bureaucrat function ###" << std::endl;
 		std::cout << std::endl;
-		std::cout << "Type '+' or '-' to move the grade of the bureaucrate" << std::endl;
-		std::cout << "Type 'info' to get the rank of the bureaucrate" << std::endl;
+		std::cout << "Type '+' or '-' to move the grade of the bureaucrat" << std::endl;
+		std::cout << "Type 'sign' for the Bureaucrat to sign the Form" << std::endl;
+		std::cout << "Type 'signed' to see if the Bureaucrat have sign the Form" << std::endl;
+		std::cout << "Type 'info b' to get all data of bureaucrat" << std::endl;
+		std::cout << "Type 'info f' to get all data of Form" << std::endl;
 		std::cout << "Type 'exit' to quit" << std::endl;
 	
 		std::string	prompt;
@@ -112,10 +119,25 @@ int	main(int ac, char **av)
 				}
 				std::cout << "New grade is [" << bur1.getGrade() << "]" << std::endl;
 			}
-			else if (prompt == "info")
+			else if (prompt == "sign")
+			{
+				try
+				{
+					form1.beSigned(&bur1);
+				}
+				catch (std::exception &e)
+				{
+					std::cout << e.what() << std::endl;
+				}
+			}
+			else if (prompt == "signed")
+				form1.signForm();
+			else if (prompt == "info b")
 				std::cout << bur1 << std::endl;
+			else if (prompt == "info f")
+					std::cout << form1;
 			else if (prompt == "exit")
-				break ;
+				break;
 		}
 	}
 	catch (std::exception &e)

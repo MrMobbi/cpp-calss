@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
-#include "Bureaucrate.hpp"
+#include "Bureaucrat.hpp"
 
 std::string	safe_getline(std::string line)
 {
@@ -31,7 +31,7 @@ int	safe_getline_atoi(void)
 	const char	*str;
 	int			nb;
 
-	std::cout << "Enter the grade of the bureaucrate :";
+	std::cout << "Enter the grade of the bureaucrate : ";
 	while (1)
 	{
 		std::getline(std::cin, tmp);
@@ -61,8 +61,8 @@ int	main(int ac, char **av)
 
 	try
 	{
-		Bureaucrate	gile(safe_getline("Enter the Name of the bureaucrate :"), safe_getline_atoi());
-		Bureaucrate	robert(gile);
+		Bureaucrat	gile(safe_getline("Enter the Name of the bureaucrate : "), safe_getline_atoi());
+		Bureaucrat	robert(gile);
 	
 		std::cout << robert << std::endl;
 		std::cout << "Type '+' or '-' to move the grade of the bureaucrate" << std::endl;
