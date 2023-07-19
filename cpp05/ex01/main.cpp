@@ -82,11 +82,10 @@ int	main(int ac, char **av)
 		std::cout << form2 << std::endl;
 
 		std::cout << std::endl;
-		std::cout << "### Starting test of Bureaucrat function ###" << std::endl;
+		std::cout << "### Starting test of Bureaucrat and Form function ###" << std::endl;
 		std::cout << std::endl;
 		std::cout << "Type '+' or '-' to move the grade of the bureaucrat" << std::endl;
 		std::cout << "Type 'sign' for the Bureaucrat to sign the Form" << std::endl;
-		std::cout << "Type 'signed' to see if the Bureaucrat have sign the Form" << std::endl;
 		std::cout << "Type 'info b' to get all data of bureaucrat" << std::endl;
 		std::cout << "Type 'info f' to get all data of Form" << std::endl;
 		std::cout << "Type 'exit' to quit" << std::endl;
@@ -120,18 +119,7 @@ int	main(int ac, char **av)
 				std::cout << "New grade is [" << bur1.getGrade() << "]" << std::endl;
 			}
 			else if (prompt == "sign")
-			{
-				try
-				{
-					form1.beSigned(&bur1);
-				}
-				catch (std::exception &e)
-				{
-					std::cout << e.what() << std::endl;
-				}
-			}
-			else if (prompt == "signed")
-				form1.signForm();
+				bur1.signForm(&form1);
 			else if (prompt == "info b")
 				std::cout << bur1 << std::endl;
 			else if (prompt == "info f")

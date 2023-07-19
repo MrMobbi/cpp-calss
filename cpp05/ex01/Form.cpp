@@ -4,9 +4,9 @@
 
 //	### Constructor ###
 
-Form::Form(void) : _name("") , _to_sign(0), _to_exec(0), _signed(false) ,_gile(NULL){} 
+Form::Form(void) : _name("") , _to_sign(0), _to_exec(0), _signed(false) {} 
 
-Form::Form(std::string name, int to_sign, int to_exec) : _name(name), _to_sign(to_sign), _to_exec(to_exec), _signed(false), _gile(NULL)
+Form::Form(std::string name, int to_sign, int to_exec) : _name(name), _to_sign(to_sign), _to_exec(to_exec), _signed(false)
 {
 	if (to_sign <= 0 || to_exec <= 0)
 		throw (Form::GradeTooHighException());
@@ -55,8 +55,17 @@ int	Form::getGradeToExec(void) const
 	return (this->_to_exec);
 }
 
-void	Form::beSigned(Bureaucrat *gile)
+void	Form::beSigned(const Bureaucrat *gile)
 {
+	if (this->_signed == true)
+		std::cout << gile->getName() << " couldn sign " << this->_name << " because it's already signed" << std::endl;	
+	else if (gile->getGrade() > this->_to_sign)
+		throw (Form::GradeTooHighException());
+	else
+	{
+		this->_signed = true;
+		std::cout << gile->getName() << " signed " << this->_name << std::endl;
+	}
 }
 
 //	### Exception Member ###
