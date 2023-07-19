@@ -1,6 +1,6 @@
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 //	### Constructor ###
 
@@ -49,16 +49,12 @@ Bureaucrat &Bureaucrat::operator = (const Bureaucrat &t)
 //	### Destructor ###
 
 Bureaucrat::~Bureaucrat(void)
-{
-	std::cout << "Destructor of Bureaucrat called" << std::endl;
-}
+{ std::cout << "Destructor of Bureaucrat called" << std::endl; }
 
 //	### Member Function ###
 
 std::string	Bureaucrat::getName(void) const
-{
-	return (this->_name);
-}
+{ return (this->_name); }
 
 int	Bureaucrat::getGrade(void) const
 {
@@ -81,7 +77,17 @@ void	Bureaucrat::gradeDown(void)
 		this->_grade++;
 }
 
-void	Bureaucrat::signForm(Form &f) const
+void	Bureaucrat::reGrade(int new_grade)
+{
+	if (new_grade > 150)
+		throw(Bureaucrat::GradeTooLowException());
+	else if (new_grade < 1)
+		throw(Bureaucrat::GradeTooHighException());
+	else
+		this->_grade = new_grade;
+}
+
+void	Bureaucrat::signForm(AForm &f) const
 {
 	try
 	{
@@ -93,18 +99,26 @@ void	Bureaucrat::signForm(Form &f) const
 	}
 }
 
+void	Bureaucrat::executeForm(const AForm &f) const
+{
+	try
+	{
+		f.execute(*this);
+		std::cout << this->getName() << " executed " << f.getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+}
+
 //	### Exception Membre ###
 
 const char	*Bureaucrat::GradeTooHighException::what(void) const throw()
-{
-	return ("Bureaucrat : Grade it too high, cannot go over 1!");
-}
+{ return ("Bureaucrat : Grade it too high, cannot go over 1!"); }
 
 const char	*Bureaucrat::GradeTooLowException::what(void) const throw()
-{
-
-	return ("Bureaucrat : Grade it too low, cannot go under 150!");
-}
+{ return ("Bureaucrat : Grade it too low, cannot go under 150!"); }
 
 //	### Overload operator '<<' ###
 

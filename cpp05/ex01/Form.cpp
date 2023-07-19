@@ -55,16 +55,16 @@ int	Form::getGradeToExec(void) const
 	return (this->_to_exec);
 }
 
-void	Form::beSigned(const Bureaucrat *gile)
+void	Form::beSigned(const Bureaucrat &gile)
 {
 	if (this->_signed == true)
-		std::cout << gile->getName() << " couldn sign " << this->_name << " because it's already signed" << std::endl;	
-	else if (gile->getGrade() > this->_to_sign)
+		std::cout << gile.getName() << " couldn sign " << this->_name << " because it's already signed" << std::endl;	
+	else if (gile.getGrade() > this->_to_sign)
 		throw (Form::GradeTooHighException());
 	else
 	{
 		this->_signed = true;
-		std::cout << gile->getName() << " signed " << this->_name << std::endl;
+		std::cout << gile.getName() << " signed " << this->_name << std::endl;
 	}
 }
 

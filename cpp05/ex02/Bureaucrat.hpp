@@ -8,7 +8,7 @@
 # include <exception>
 # include <ostream>
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -21,8 +21,10 @@ class Bureaucrat
 		int			getGrade(void) const;
 		void		gradeUp(void);
 		void		gradeDown(void);
+		void		reGrade(int new_grade);
 
-		void		signForm(Form &f) const;
+		void		signForm(AForm &f) const;
+		void		executeForm(const AForm &f) const;
 
 		class	GradeTooHighException : public std::exception
 		{
