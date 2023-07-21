@@ -3,23 +3,15 @@
 
 //	### Constructor ###
 
-Intern::Intern(void)
-{
-	std::cout << "Constructor of Intern called" << std::endl;
-}
+Intern::Intern(void) {}
 
-Intern::Intern(const Intern &t)
-{
-	(void) t;
-	std::cout << "Copy constructor of Intern called" << std::endl;
-}
+Intern::Intern(const Intern &t) { (void) t; }
 
 //	### Overload Operator ###
 
 Intern &Intern::operator = (const Intern &t)
 {
 	(void) t;
-	std::cout << "Copy assignement operator of Intern called" << std::endl;
 	return (*this);
 }
 
@@ -32,3 +24,21 @@ Intern::~Intern(void)
 
 //	### Member Function ###
 
+AForm	*Intern::makeForm(std::string name, std::string target) const
+{
+	AForm	*form = NULL;
+
+	if (name == "shrubbery creation")
+		form = new ShrubberyCreationForm(target);
+	else if (name == "robotomy request")
+		form = new RobotomyRequestForm(target);
+	else if (name == "presidential pardon")
+		form = new PresidentialPardonForm(target);
+	else
+	{
+		std::cout << "Intern canot create this Form" << std::endl;
+		return (NULL);
+	}
+	std::cout << "Intern creates " << name << std::endl;
+	return (form);
+}

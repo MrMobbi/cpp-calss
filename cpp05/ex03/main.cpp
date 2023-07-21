@@ -4,6 +4,7 @@
 #include <string>
 #include <exception>
 #include "Bureaucrat.hpp"
+#include "Intern.hpp"
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -11,11 +12,8 @@
 
 #define MSG_NAME_BUR "Enter the Name of the bureaucrate : "
 #define MSG_GRADE_BUR "Enter the Grade of the Bureaucrat : "
-#define MSG_NAMESH_FORM "Enter Name of the Shrubbery Form : "
-#define MSG_NAMERO_FORM "Enter Name of the Robotomy Form : "
-#define MSG_NAMEPR_FORM "Enter Name of the Presidnetial Pardon Form : "
-#define MSG_SIGN_FORM "Enter the Grade to sign the form : "
-#define MSG_EXEC_FORM "Enter the Grade to execute the form : "
+#define MSG_TARGET_FORM "Enter Name of the Form : "
+#define MSG_NAME_FORM "Enter the type of the Form you want to create : "
 
 std::string	safe_getline(std::string line)
 {
@@ -63,6 +61,28 @@ int	gnl_atoi(std::string line)
 	return (nb);
 }
 
+void	print_help(void)
+{
+	std::cout << std::endl;
+	std::cout << "### Starting test of Bureaucrat and AForm function ###" << std::endl;
+	std::cout << std::endl;
+	std::cout << "Type 'help' to see all the command" << std::endl;
+	std::cout << "Type '+' or '-' to move the grade of the bureaucrat" << std::endl;
+	std::cout << "Type 're grade' to change the grade of the Bureaucrat" << std::endl;
+	std::cout << "Type 'sign' or 'execute' for the Bureaucrat to sign or execute the Form" << std::endl;
+	std::cout << "Type 'create' for the intern to create a Form" << std::endl;
+	std::cout << "Type 'info b' to get all data of bureaucrat" << std::endl;
+	std::cout << "Type 'info f' to get all data of Form" << std::endl;
+	std::cout << "Type 'exit' to quit" << std::endl;
+}
+
+void	help_creation(void)
+{
+	std::cout << "1 for Shrubbery Creation" << std::endl;
+	std::cout << "2 for Robotomy Request" << std::endl;
+	std::cout << "3 for Presidential Pardon" << std::endl;
+}
+
 int	main(int ac, char **av)
 {
 	(void) av;
@@ -81,34 +101,13 @@ int	main(int ac, char **av)
 		Bureaucrat	bur2(bur1);
 		std::cout << bur2 << std::endl;
 
-		//	# Creating AForm and testing Overload operator
-		ShrubberyCreationForm	f1(safe_getline(MSG_NAMESH_FORM));
-		ShrubberyCreationForm	f2(f1);
-		std::cout << f2 << std::endl;
+		AForm	*form = NULL;
+		Intern	bitch;
 
-		RobotomyRequestForm		f3(safe_getline(MSG_NAMERO_FORM));
-		RobotomyRequestForm		f4(f3);
-		std::cout << f4 << std::endl;
+		print_help();
 
-		PresidentialPardonForm	f5(safe_getline(MSG_NAMEPR_FORM));
-		PresidentialPardonForm	f6(f5);
-		std::cout << f6 << std::endl;
-
-		std::cout << std::endl;
-		std::cout << "### Starting test of Bureaucrat and AForm function ###" << std::endl;
-		std::cout << std::endl;
-		std::cout << "Type '+' or '-' to move the grade of the bureaucrat" << std::endl;
-		std::cout << "Type 're grade' to change the grade of the Bureaucrat" << std::endl;
-		std::cout << "Type 'sign' or 'execute' for the Bureaucrat to sign or execute the Form" << std::endl;
-		std::cout << "When in sign or execute type one of the 3 Form to sign it :" << std::endl;
-		std::cout << "- '1' for 'Shrubbery'" << std::endl;
-		std::cout << "- '2' for 'Robotomy'" << std::endl;
-		std::cout << "- '3' for 'President'" << std::endl;
-		std::cout << "Type 'info b' to get all data of bureaucrat" << std::endl;
-		std::cout << "Type 'info f' to get all data of Form" << std::endl;
-		std::cout << "Type 'exit' to quit" << std::endl;
-	
 		std::string	prompt;
+
 		while (1)
 		{
 			prompt = safe_getline("$> ");
@@ -149,63 +148,44 @@ int	main(int ac, char **av)
 			}
 			else if (prompt == "sign")
 			{
-				while (1)
-				{
-					std::cout << "Enter the type of the Form you want to sign" << std::endl;
-					prompt = safe_getline("$> ");
-					if (prompt == "1")
-						bur1.signForm(f1);
-					else if (prompt == "2")
-						bur1.signForm(f3);
-					else if (prompt == "3")
-						bur1.signForm(f5);
-					break ;
-				}
+				if (form != NULL)
+					bur1.signForm(*form);
+				else
+					std::cout << "No Form given" << std::endl;
 			}
 			else if (prompt == "execute")
 			{
-				while (1)
-				{
-					std::cout << "Enter the type of the Form you want to execute" << std::endl;
-					prompt = safe_getline("$> ");
-					if (prompt == "1")
-						bur1.executeForm(f1);
-					else if (prompt == "2")
-						bur1.executeForm(f3);
-					else if (prompt == "3")
-						bur1.executeForm(f5);
-					break ;
-				}
+				if (form != NULL)
+					bur1.executeForm(*form);
+				else
+					std::cout << "No Form given" << std::endl;
 			}
 			else if (prompt == "info b")
 				std::cout << bur1 << std::endl;
 			else if (prompt == "info f")
+				std::cout << form << std::endl;
+			else if (prompt == "create")
 			{
-				while (1)
-				{
-					std::cout << "Enter the type of the Form for the info you want" << std::endl;
-					prompt = safe_getline("$> ");
-					if (prompt == "1")
-					{
-						std::cout << f1 << std::endl;
-						break;
-					}
-					else if (prompt == "2")
-					{
-						std::cout << f3 << std::endl;
-						break ;
-					}
-					else if (prompt == "3")
-					{
-						std::cout << f5 << std::endl;
-						break ;
-					}
-					else if (prompt == "exit")
-						break ;
-				}
+				if (form != NULL)
+					delete(form);
+				help_creation();
+				prompt = safe_getline("$> ");
+				if (prompt == "1")
+					form = bitch.makeForm("shrubbery creation", safe_getline(MSG_TARGET_FORM));
+				if (prompt == "2")
+					form = bitch.makeForm("robotomy request", safe_getline(MSG_TARGET_FORM));
+				if (prompt == "3")
+					form = bitch.makeForm("presidential pardon", safe_getline(MSG_TARGET_FORM));
+
 			}
+			else if (prompt == "help")
+				print_help();
 			else if (prompt == "exit")
+			{
+				if (form != NULL)
+					delete(form);
 				break;
+			}
 		}
 	}
 	catch (std::exception &e)
