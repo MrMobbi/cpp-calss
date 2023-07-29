@@ -36,13 +36,15 @@ std::string	ShrubberyCreationForm::nameFile(void) const
 
 void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
+	std::string	name = this->nameFile();
+
 	if (this->getSigned() == false)
 		throw (AForm::FormNotSignedException());
 	else if (executor.getGrade() > this->getGradeToExec())
 		throw (AForm::GradeTooHighException());
 	else
 	{
-		std::ofstream file(this->nameFile());
+		std::ofstream file(name.c_str());
 		file << "         # #### ####" << std::endl;
 		file << "       ### ./#|### |/####" << std::endl;
 		file << "      ##./#/ .||/##/_/##/_#" << std::endl;

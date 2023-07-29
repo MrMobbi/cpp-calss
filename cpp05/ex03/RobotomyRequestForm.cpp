@@ -33,7 +33,7 @@ void	RobotomyRequestForm::execute(const Bureaucrat &executor) const
 		throw (AForm::GradeTooHighException());
 	else
 	{
-		std::time_t result = std::time(nullptr);
+		std::time_t result = std::time(NULL);
 		std::cout << "pew, pew, zzzzzzttti, Brum-rum-rum-rum, click!" <<std::endl;
 		if (result % 2 == 0)
 			std::cout << this->getName() << " has been robotomized" << std::endl;

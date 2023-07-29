@@ -13,9 +13,9 @@ SRCS		= main.cpp \
 OBJS		= $(SRCS:.cpp=.o)
 
 ifeq ($(shell uname), Linux)
- CC			= g++
+ CC			= g++ -g
 else
- CC			= c++
+ CC			= c++ -g
 endif
 
 CPPFLAGS	= -Wall -Werror -Wextra -std=c++98
