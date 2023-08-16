@@ -16,7 +16,13 @@ class Intern
 		Intern &operator = (const Intern &t);
 		~Intern(void);
 
-		AForm	*makeForm(std::string name, std::string target) const; 
+		AForm	*makeForm(std::string name, std::string target) const;
+
+		class	NoMatchingFormException : public std::exception
+		{
+			public :
+				virtual const char *what(void) const throw();
+		};
 };
 
 #endif

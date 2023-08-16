@@ -36,7 +36,6 @@ class Bureaucrat
 			public :
 				virtual const char *what(void) const throw();
 		};
-
 	private :
 		Bureaucrat(void);
 		Bureaucrat &operator = (const Bureaucrat &t);

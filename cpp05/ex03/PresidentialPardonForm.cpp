@@ -5,7 +5,8 @@
 
 PresidentialPardonForm::PresidentialPardonForm(void) : AForm("President Pardon", 25, 5) {}
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm(target, 25, 5) {}
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm(target, 25, 5)
+{	std::cout << "Presidential Pardon created" << std::endl; }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &t) : AForm(t) {}
 

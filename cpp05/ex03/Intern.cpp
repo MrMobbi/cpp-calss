@@ -24,21 +24,31 @@ Intern::~Intern(void)
 
 //	### Member Function ###
 
+static AForm	*shrubberyCreationFraction(const std::string target)
+{ return (new ShrubberyCreationForm(target)); }
+
+static AForm	*robotomyRequestFraction(const std::string target)
+{ return (new RobotomyRequestForm(target)); }
+
+static AForm	*presidentialPardonFraction(const std::string target)
+{ return (new PresidentialPardonForm(target)); }
+
 AForm	*Intern::makeForm(std::string name, std::string target) const
 {
-	AForm	*form = NULL;
-
-	if (name == "shrubbery creation")
-		form = new ShrubberyCreationForm(target);
-	else if (name == "robotomy request")
-		form = new RobotomyRequestForm(target);
-	else if (name == "presidential pardon")
-		form = new PresidentialPardonForm(target);
-	else
+	std::string	name_form[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+	AForm		*(*fct[3])(const std::string) = {\
+				shrubberyCreationFraction, \
+				robotomyRequestFraction, \
+				presidentialPardonFraction};
+	for (int i = 0; i < 3; i++)
 	{
-		std::cout << "Intern canot create this Form" << std::endl;
-		return (NULL);
+		if (name_form[i] == name)
+			return (fct[i](target));
 	}
-	std::cout << "Intern creates " << name << std::endl;
-	return (form);
+	throw(Intern::NoMatchingFormException());
 }
+
+// ### Exception Membre ###
+
+const char *Intern::NoMatchingFormException::what(void) const throw()
+{ return ("No Matching Form found."); }
