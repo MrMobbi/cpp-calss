@@ -4,6 +4,7 @@
 
 # include <iostream>
 # include <cctype>
+# include <cstdlib>
 # include "value.h"
 # include "Error.hpp"
 

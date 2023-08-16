@@ -48,7 +48,6 @@ void	ScalarConvert::pars(const std::string str)
 	{
 		if (s[i] == '+' || s[i] == '-')
 		{
-			std::cout << s[i] << std::endl;
 			if (sign > 0)
 				throw(Error::ImpossibleCaseException());
 			sign += 1;
@@ -78,8 +77,16 @@ int	ScalarConvert::toInt(const std::string str)
 {
 	char	*s = const_cast<char *>(str.c_str());
 	char	*s1 = const_cast<char *>(D_MAX_INT);
-	std::cout << std::endl;
-	std::cout << "test int : " << s1 - s << std::endl;
+	if (s[0] == '-')
+		s1 = const_cast<char *>(D_MIN_INT);
+	if (str.length() > 12)
+		throw (Error::ErrorNanException());
+	else if (str.length() >= 10)
+	for (int i = 0; s[i] != '\0'; i++)
+	{
+		if (s[i] > s1[i])
+			throw(Error::ErrorImpossibleException());
+	}
 	return (std::atoi(str.c_str()));
 }
 
@@ -100,7 +107,7 @@ void	ScalarConvert::convert(const std::string str)
 	try
 	{
 		ScalarConvert::pars(str);
-		std::cout << "str : " << std::atoi(str.c_str()) << std::endl;
+		std::cout << "str : " << str << std::endl;
 		try
 		{ std::cout << "char : [" << ScalarConvert::toChar(str) << "]" << std::endl; }
 		catch (std::exception &e)
