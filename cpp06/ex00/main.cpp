@@ -1,14 +1,15 @@
 
 #include <iostream>
-#include <cmath>
+#include "value.h"
+#include "ScalarConvert.hpp"
 
 int	main(int ac, char **av)
 {
-	(void) ac;
-	(void) av;
-	
-	float	nan_value;
-	nan_value = nanf("0");
-	std::cout << "nan_value [" << nan_value << "]" << std::endl;
+	if (ac != 2)
+	{
+		std::cout << "Please enter 1 argument with the program" << std::endl;
+		return (1);
+	}
+	ScalarConvert::convert(av[1]);
 	return (0);
 }

@@ -3,6 +3,8 @@
 NAME		= convert
 
 SRCS		= main.cpp \
+			  ScalarConvert.cpp \
+			  Error.cpp \
 
 OBJS		= $(SRCS:.cpp=.o)
 
