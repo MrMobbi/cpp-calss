@@ -22,17 +22,11 @@ Error::~Error(void) {}
 
 //	### Exception Member Function ###
 
-const char	*Error::ErrorImpossibleException::what(void) const throw()
-{ return ("impossible"); }
-
-const char	*Error::ErrorNonDisplayableException::what(void) const throw()
-{ return ("Non displayable"); }
-
-const char	*Error::ErrorNanException::what(void) const throw()
-{ return ("nan"); }
-
 const char	*Error::ImpossibleCaseException::what(void) const throw()
 { return ("char : [impossible]\nint : [impossible]\nfloat : [impossible]\ndouble : [impossible]"); }
+
+const char *Error::OutOfRangeException::what(void) const throw()
+{ return ("Wrong number value is out of range of the type deteced"); }
 
 const char	*Error::NanCaseException::what(void) const throw()
 { return ("char : [impossible]\nint : [impossible]\nfloat : [nanf]\ndouble : [nan]"); }

@@ -11,25 +11,13 @@ class Error
 	public :
 		~Error(void);
 
-		class ErrorImpossibleException : public std::exception
-		{
-			public :
-				virtual const char *what(void) const throw();
-		};
-
-		class ErrorNonDisplayableException : public std::exception
-		{
-			public :
-				virtual const char *what(void) const throw();
-		};
-
-		class ErrorNanException : public std::exception
-		{
-			public :
-				virtual const char *what(void) const throw();
-		};
-
 		class ImpossibleCaseException : public std::exception
+		{
+			public :
+				virtual const char *what(void) const throw();
+		};
+
+		class OutOfRangeException : public std::exception
 		{
 			public :
 				virtual const char *what(void) const throw();
