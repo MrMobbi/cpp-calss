@@ -41,6 +41,8 @@ void	identify(Base *p)
 		type = "B";
 	else if (dynamic_cast<C *>(p))
 		type = "C";
+	else
+		type = "NULL";
 
 	std::cout << "Identify on a pointer :" << std::endl;
 	std::cout << "Type of the class is : [" << type << "]" << std::endl;
