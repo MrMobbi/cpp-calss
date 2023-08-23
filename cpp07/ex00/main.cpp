@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include <string>
-#include "template.h"
+#include "template.hpp"
 
 class Data {
 	public :

@@ -1,6 +1,6 @@
 
 
-NAME		= IRT
+NAME		= exec
 
 SRCS		= main.cpp \
 

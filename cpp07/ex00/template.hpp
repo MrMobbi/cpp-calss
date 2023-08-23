@@ -1,6 +1,6 @@
 
-#ifndef TEMPLATE_H
-# define TEMPLATE_H
+#ifndef TEMPLATE_HPP
+# define TEMPLATE_HPP
 
 template<typename t_type>
 const t_type	&max(const t_type &a, const t_type &b)
