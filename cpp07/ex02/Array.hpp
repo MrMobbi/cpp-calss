@@ -50,7 +50,7 @@ class Array {
 				virtual const char *what(void) const throw()
 				{
 					return ("Index is not Valid");
-				}
+				};
 		};
 
 //	### Overload operator '[]'
