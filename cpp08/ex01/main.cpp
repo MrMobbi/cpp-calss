@@ -7,6 +7,7 @@
 int	main(void)
 {
 	Span	v1(10000);
+	int		r = 100;
 
 	srand(time(NULL));
 	int	rand = std::rand();
@@ -15,7 +16,7 @@ int	main(void)
 		for(int i = 0; i < 5 ; i++)
 		{
 			rand = std::rand();
-			v1.addNumber(rand);
+			v1.addNumber(rand % r);
 		}
 	}
 	catch (std::exception &e)
@@ -33,7 +34,7 @@ int	main(void)
 		for(int i = 0; i < 5 ; i++)
 		{
 			rand = std::rand();
-			v1.addNumber(rand);
+			v1.addNumber(rand & r);
 		}
 	}
 	catch (std::exception &e)
