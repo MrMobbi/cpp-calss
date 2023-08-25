@@ -18,15 +18,19 @@ int	main(int ac, char **av)
 
 		for (int i = 10; i < 20; i++)
 			lst.push_back(i);
+		std::cout << "Displaying value in vector :" << std::endl;
 		std::for_each(lst.begin(), lst.end(), display_element);
+		std::cout << "testing function easyfind :" << std::endl;
 		try
 		{
-			easyfind(lst, std::atoi(av[1]));
+			std::cout << "[" << *(easyfind(lst, std::atoi(av[1]))) << "]" << std::endl;
 		}
 		catch (std::exception &e)
 		{
-			std::cout << e.what() << std::endl;
+			std::cout << e.what() << "]" << std::endl;
 		}
 	}
+	else
+		std::cout << "Please add a argument" << std::endl;
 	return (0);
 }

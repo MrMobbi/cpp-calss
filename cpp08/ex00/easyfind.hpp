@@ -17,7 +17,7 @@ class ErrorNotFoundException : public std::exception
 		}
 };
 
-template<typename t_type = int>
+template<typename t_type>
 typename t_type::iterator easyfind(t_type &lst, int n)
 {
 	typename t_type::iterator is_find = std::find(lst.begin(), lst.end(), n);
