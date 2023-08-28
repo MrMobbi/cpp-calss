@@ -30,8 +30,9 @@ Base	*generate(void)
 		case 2:
 			std::cout << "C" << std::endl;
 			return (new C());
+		default :
+			return (NULL);
 	}
-	return (new A);
 }
 
 void	identify(Base *p)
