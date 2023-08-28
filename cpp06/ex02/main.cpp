@@ -1,5 +1,7 @@
 
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
 #include <string>
 
 class Base {
@@ -13,6 +15,7 @@ class C : public Base {};
 
 Base	*generate(void)
 {
+
 	std::time_t result = std::time(NULL);
 	int	rand = result % 3;
 

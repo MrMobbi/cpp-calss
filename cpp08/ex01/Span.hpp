@@ -18,6 +18,7 @@ class Span
 		void	displayCapacity(void) const;
 		void	displayElements(void);
 
+		void	insertNumber(std::vector<int> tail);
 		void	addNumber(int n);
 		int		shortestSpan(void);
 		int		longestSpan(void);

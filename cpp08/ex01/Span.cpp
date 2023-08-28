@@ -58,6 +58,14 @@ void	Span::displayElements(void)
 	std::cout << std::endl;
 }
 
+void	Span::insertNumber(std::vector<int> tail)
+{
+	if (this->_lst.size() + tail.size() < this->_lst.capacity())
+		this->_lst.insert(_lst.end(), tail.begin(), tail.end());
+	else
+		throw (ErrorOverSizeException());
+}
+
 void	Span::addNumber(int n)
 {
 	if (this->_lst.size() < this->_lst.capacity())
