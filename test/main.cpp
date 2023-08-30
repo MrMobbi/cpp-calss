@@ -1,26 +1,32 @@
 
 #include <iostream>
+#include <string>
+#include <cctype>
 #include <vector>
+#include <map>
 #include <algorithm>
 
 int	main(void)
 {
+	std::string									reader("2013-09-12 | 98.5987");
+	std::string									key;
+	std::string									value;
+	std::map<std::string, int>	_map;
 
-	std::vector<int>	lst;
-	lst.push_back(1);
-	lst.push_back(2);
+	std::cout << "before erase :\n" << reader << std::endl;
+	reader.erase(remove_if(reader.begin(), reader.end(), ::isspace), reader.end());
+	std::cout << "after erase :\n" << reader << std::endl;
+
+
+	key.assign(reader, 0, 10);
+	value.assign(reader.begin() + 11, reader.end());
+
+	std::cout << "Key : [" << key << "] | Value : [" << value << "]" << std::endl;
 	
-	std::vector<int>	lst2;
-	lst2.push_back(3);
-	lst2.push_back(4);
-
-	lst.insert(lst.end(), lst2.begin(), lst2.end());
-
-	std::vector<int>::iterator	it = lst.begin();
-	for (;it != lst.end(); it++)
-		std::cout << "[" << *it << "]" << std::endl;
-
-	for (int i = 0; i < 10; i++)
-		std::cout << rand() << std::endl;
+	_map[key] = std::atoi(value.c_str());
+	
+	std::cout << std::endl;
+	std::map<std::string, int>::const_iterator	x = _map.begin();
+	std::cout << "Map -> [" << x->first << "] | [" << x->second << "]" << std::endl;
 	return (0);
 }

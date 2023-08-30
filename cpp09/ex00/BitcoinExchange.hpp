@@ -4,7 +4,11 @@
 
 # include <iostream>
 # include <map>
+# include <vector>
+# include <string>
+# include <cctype>
 # include <fstream>
+# include <algorithm>
 
 class BitcoinExchange
 {
@@ -14,6 +18,10 @@ class BitcoinExchange
 		BitcoinExchange &operator = (const BitcoinExchange &t);
 		~BitcoinExchange(void);
 
+		std::map<std::string, std::string>	assignMap(std::ifstream &ifs) const;
+		std::map<std::string, std::string>	getData(void) const;
+		std::map<std::string, std::string>	getWallet(void) const;
+
 		class FileNotValidException : public std::exception
 		{
 			public :
@@ -21,8 +29,8 @@ class BitcoinExchange
 		};
 	private :
 		BitcoinExchange(void);
-		std::map<std::string, int>	_data;
-		std::map<std::string, int>	_wallet;
+		std::map<std::string, std::string>	_data;
+		std::map<std::string, std::string>	_wallet;
 };
 
 #endif
