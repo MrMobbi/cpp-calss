@@ -50,22 +50,22 @@ class	MutantStack : public std::stack<t_type>
 
 		reverse_iterator	rbegin(void)
 		{
-			return (this->c.begin());
+			return (this->c.rbegin());
 		}
 
 		reverse_iterator	rend(void)
 		{
-			return (this->c.end());
+			return (this->c.rend());
 		}
-		
+
 		const_reverse_iterator	rbegin(void) const
 		{
-			return (this->c.begin());
+			return (this->c.rbegin());
 		}
 
 		const_reverse_iterator	rend(void) const
 		{
-			return (this->c.end());
+			return (this->c.rend());
 		}
 };
 
