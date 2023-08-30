@@ -1,41 +1,7 @@
 
 #include <iostream>
 #include <string>
-#include <fstream>
-#include <map>
-#include <algorithm>
-
-bool	files(int ac, char **av)
-{
-	if (ac != 2)
-	{
-		std::cout << "Wring number of arguments" << std::endl;
-		return (false);
-	}
-	info.data.open("data.csv");
-	if (!info.data.is_open())
-	{
-		std::cout << "Data file can't be opened" << std::endl;
-		return (false);
-	}
-	std::string	input(av[1]);
-	info.wallet.open((input.c_str()));
-	if (!info.wallet.is_open())
-	{
-		std::cout << "Wallet file can't be opened" << std::endl;
-		return (false);
-	}
-	return (true);
-}
-
-bool	pars(t_info &info, std::map<std::string, int> &data, std::map<std::string, int> &wallet)
-{
-	std::string	pars;
-	std::string	key;
-
-	while (info.data
-	return (true);
-}
+#include "BitcoinExchange.hpp"
 
 void print_map(std::string comment, const std::map<std::string, int>& m)
 {
@@ -48,16 +14,18 @@ void print_map(std::string comment, const std::map<std::string, int>& m)
 
 int	main(int	ac, char **av)
 {
-	BitcoinExchange	quentin;
-
-	if (!files(ac, av, info))
+	if (ac != 2)
+	{
+		std::cout << "Wrong Number of arguments" << std::endl;
 		return (1);
-	if(!pars(info))
-		return (2);
-	
-	ref["1)"] = 1;
-	print_map("key :\n", ref);
-	info.data.close();
-	info.wallet.close();
+	}
+	try
+	{
+		BitcoinExchange	quentin("data.csv", static_cast<std::string>(av[1]));
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 	return (0);
 }

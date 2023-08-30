@@ -3,6 +3,8 @@
 # define BITCOINEXCHANGE_HPP
 
 # include <iostream>
+# include <map>
+# include <fstream>
 
 class BitcoinExchange
 {
@@ -11,6 +13,12 @@ class BitcoinExchange
 		BitcoinExchange(const BitcoinExchange &t);
 		BitcoinExchange &operator = (const BitcoinExchange &t);
 		~BitcoinExchange(void);
+
+		class FileNotValidException : public std::exception
+		{
+			public :
+				virtual const char *what() const throw();
+		};
 	private :
 		BitcoinExchange(void);
 		std::map<std::string, int>	_data;

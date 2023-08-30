@@ -3,25 +3,28 @@
 # define SPAN_HPP
 
 # include <iostream>
+# include <iterator>
 # include <vector>
 # include <exception>
 # include <algorithm>
+# include <numeric>
 
 class Span
 {
 	public :
-		Span(const int n);
+		Span(unsigned int n);
 		Span(Span &t);
 		Span &operator = (Span &t);
 		~Span(void);
 
 		void	displayCapacity(void) const;
-		void	displayElements(void);
+		void	displayElements(void) const;
 
-		void	insertNumber(std::vector<int> tail);
+		void	insertNumber(std::vector<int>::iterator begin, 
+				std::vector<int>::iterator end);
 		void	addNumber(int n);
-		int		shortestSpan(void);
-		int		longestSpan(void);
+		int		shortestSpan(void) const;
+		int		longestSpan(void) const;
 
 		class ErrorOverSizeException : public std::exception
 		{

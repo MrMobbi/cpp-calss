@@ -38,7 +38,7 @@ int	main(void)
 			tail.push_back(rand & r);
 		}
 
-		v1.insertNumber(tail);
+		v1.insertNumber(tail.begin(), tail.end());
 		std::cout << "displaying info of original :" << std::endl;
 		v1.displayCapacity();
 		v1.displayElements();
