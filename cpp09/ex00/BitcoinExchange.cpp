@@ -12,8 +12,8 @@ BitcoinExchange::BitcoinExchange(std::string data, std::string wallet)
 
 	if (!ifs_data.is_open() || !ifs_wallet.is_open())
 		throw (FileNotValidException());
-	this->_data = assignMap(ifs_data);
-	this->_wallet = assignMap(ifs_wallet);
+	this->_data = assignMap(ifs_data, ',');
+	this->_wallet = assignMap(ifs_wallet, '|');
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &t) : \
@@ -36,11 +36,11 @@ BitcoinExchange::~BitcoinExchange(void) {}
 
 //	### Member Function ###
 
-std::map<std::string, std::string>	BitcoinExchange::assignMap(std::ifstream &ifs) const
+std::map<std::string, std::string>	BitcoinExchange::assignMap(std::ifstream &ifs, char c) const
 {
-	std::string									read;
-	std::string									key;
-	std::string									value;
+	std::string	read;
+	std::string	key;
+	std::string	value;
 	std::map<std::string, std::string>	mymap;
 
 	while (std::getline(ifs, read))
@@ -48,18 +48,12 @@ std::map<std::string, std::string>	BitcoinExchange::assignMap(std::ifstream &ifs
 		if (read.size() != 0)
 		{
 			read.erase(remove_if(read.begin(), read.end(), ::isspace), read.end());
-			std::cout << read << std::endl;
-			if (read.size() < 10)
-				key = "Wrong";
-			else
-				key.assign(read, 0, 10);
-			if (read.size() < 11)
-				value = "Wrong";
-			else
-				value.assign(read.begin() + 11, read.end());
+			read.find(c) < read.size() ? key.assign(read, 0, read.find(c)) :\
+				key.assign(read, 0, read.size());
+			read.find(c) < read.size() ? value.assign(read, read.find(c) + 1, read.size() - 1) : \
+				value = "wrong";
 			mymap[key] = value;
 		}
-		std::cout << std::endl;
 	}
 	return (mymap);
 }

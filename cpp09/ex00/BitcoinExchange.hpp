@@ -18,7 +18,7 @@ class BitcoinExchange
 		BitcoinExchange &operator = (const BitcoinExchange &t);
 		~BitcoinExchange(void);
 
-		std::map<std::string, std::string>	assignMap(std::ifstream &ifs) const;
+		std::map<std::string, std::string>	assignMap(std::ifstream &ifs, char c) const;
 		std::map<std::string, std::string>	getData(void) const;
 		std::map<std::string, std::string>	getWallet(void) const;
 
