@@ -4,7 +4,6 @@
 
 # include <iostream>
 # include <map>
-# include <vector>
 # include <string>
 # include <cctype>
 # include <fstream>
@@ -13,6 +12,7 @@
 class BitcoinExchange
 {
 	public :
+		BitcoinExchange(void);
 		BitcoinExchange(std::string data, std::string wallet);
 		BitcoinExchange(const BitcoinExchange &t);
 		BitcoinExchange &operator = (const BitcoinExchange &t);
@@ -28,7 +28,6 @@ class BitcoinExchange
 				virtual const char *what() const throw();
 		};
 	private :
-		BitcoinExchange(void);
 		std::map<std::string, std::string>	_data;
 		std::map<std::string, std::string>	_wallet;
 };

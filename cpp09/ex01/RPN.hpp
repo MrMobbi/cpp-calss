@@ -13,6 +13,7 @@
 class RPN
 {
 	public :
+		RPN(void);
 		RPN(char **av);
 		RPN(const RPN &t);
 		RPN &operator = (const RPN &t);
@@ -31,7 +32,6 @@ class RPN
 		};
 
 	private :
-		RPN(void);
 		std::list<std::string>	_prompt;
 		std::list<int>					_number;
 };
