@@ -8,6 +8,8 @@
 # include <algorithm>
 # include <sstream>
 # include <string>
+# include <sys/time.h>
+# include <iomanip>
 
 template <typename T>
 class PmergeMe
@@ -64,6 +66,9 @@ class PmergeMe
 				throw (ErrorBadInputException());
 			else if (str.find_first_not_of("0123456789") != std::string::npos)
 				throw (ErrorBadInputException());
+			else if (std::find(this->_list.begin(), this->_list.end(), \
+						std::atoi(str.c_str())) != this->_list.end())
+				throw (ErrorDoubleException());
 			return (true);
 		};
 
@@ -72,9 +77,26 @@ class PmergeMe
 			typename T::const_iterator	itv = this->_list.begin();
 
 			std::cout << str << std::endl;
-			for (;itv != this->_list.end(); itv++)
+			for (size_t i = 0;itv != this->_list.end(); itv++)
+			{
+				if (i > 20)
+				{
+					std::cout << "[...]";
+					break ;
+				}
 				std::cout << *itv << " ";
+				i++;
+			}
 			std::cout << std::endl;
+		};
+
+		void	displayTimeStamp(std::string const &str) const
+		{
+			std::cout << std::fixed << std::setw(5);
+			std::cout << "Time to process range of : " << this->_list.size();
+			std::cout << " elements whit std::" << str << " : ";
+			std::cout << long((this->_end.tv_sec - this->_start.tv_sec) * 1e6 + \
+				(this->_end.tv_usec - this->_start.tv_usec)) << " us" << std::endl;
 		};
 
 		void	displayV(T &vec)
@@ -169,7 +191,6 @@ class PmergeMe
 			t_tab	tab;
 			typename T::iterator	it =	lst.begin();
 	
-			std::cout << std::endl;
 			for (int i = 0; it != lst.end(); it++)
 			{
 				if (i % 2 == 0)
@@ -195,7 +216,8 @@ class PmergeMe
 			{
 				if (tab.b[i] != -1)
 				{
-					typename T::iterator	it = std::lower_bound(tab.a.begin(), tab.a.begin() + (2 * i), tab.b[i]);
+					typename T::iterator	it = std::lower_bound(tab.a.begin(), \
+							tab.a.begin() + (2 * i), tab.b[i]);
 					tab.a.insert(it, tab.b[i]);
 				}
 			}
@@ -204,7 +226,9 @@ class PmergeMe
 
 		void	startSolver(void)
 		{
+			gettimeofday(&this->_start, 0);
 			this->_list = solver(this->_list);
+			gettimeofday(&this->_end, 0);
 		};
 
 //	### Exception Member
@@ -217,8 +241,18 @@ class PmergeMe
 				};
 		};
 
+		class ErrorDoubleException : public std::exception
+		{
+			public :
+				virtual const char *what(void) const throw()
+				{
+					return ("Error : Duplicata found");
+				};
+		};
+
 	private :
 		T	_list;
+		struct timeval	_start, _end;
 };
 
 #endif

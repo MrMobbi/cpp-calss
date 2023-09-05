@@ -13,13 +13,15 @@ int	main(int ac, char **av)
 	try
 	{
 		PmergeMe<std::vector<int> >	vec(av);
-		vec.displayList(std::string("Vector : "));
+		vec.displayList(std::string("vector / before: "));
 		vec.startSolver();
-		vec.displayList(std::string("Vector : "));
+		vec.displayList(std::string("vector / after : "));
 		PmergeMe<std::deque<int> >	deq(av);
-		deq.displayList(std::string("Deque : "));
+		deq.displayList(std::string("deque / before : "));
 		deq.startSolver();
-		deq.displayList(std::string("Deque : "));
+		deq.displayList(std::string("deque / after: "));
+		vec.displayTimeStamp(std::string("<vector>"));
+		deq.displayTimeStamp(std::string("<deque>"));
 	}
 	catch (std::exception &e)
 	{
