@@ -1,6 +1,7 @@
 
 #include <iostream>
-#include "PmergeMe.hpp"
+#include <vector>
+#include "test.hpp"
 
 int	main(int ac, char **av)
 {
@@ -11,9 +12,14 @@ int	main(int ac, char **av)
 	}
 	try
 	{
-		PmergeMe	test(av);
-		test.displayList();
-		test.startSolver();
+		PmergeMe<std::vector<int> >	vec(av);
+		vec.displayList(std::string("Vector : "));
+		vec.startSolver();
+		vec.displayList(std::string("Vector : "));
+		PmergeMe<std::deque<int> >	deq(av);
+		deq.displayList(std::string("Deque : "));
+		deq.startSolver();
+		deq.displayList(std::string("Deque : "));
 	}
 	catch (std::exception &e)
 	{
