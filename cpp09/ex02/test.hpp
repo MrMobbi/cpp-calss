@@ -77,16 +77,8 @@ class PmergeMe
 			typename T::const_iterator	itv = this->_list.begin();
 
 			std::cout << str << std::endl;
-			for (size_t i = 0;itv != this->_list.end(); itv++)
-			{
-				if (i > 20)
-				{
-					std::cout << "[...]";
-					break ;
-				}
+			for (;itv != this->_list.end(); itv++)
 				std::cout << *itv << " ";
-				i++;
-			}
 			std::cout << std::endl;
 		};
 
@@ -167,7 +159,6 @@ class PmergeMe
 				}
 				return (tab);
 			}
-
 			size_t	j = 0;
 			for (size_t i = 0; i < lst1.a.size(); i++)
 			{
