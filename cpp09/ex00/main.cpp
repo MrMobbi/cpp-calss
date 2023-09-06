@@ -64,7 +64,7 @@ bool	isValidWallet(t_iter &needle)
 	}
 	if (!isValidDate(needle->first))
 	{
-		std::cout << "Error: Bad input : : " << needle->first << std::endl;
+		std::cout << "Error: Bad input : " << needle->first << std::endl;
 		return (false);
 	}
 	return (true);
