@@ -1,7 +1,9 @@
 ## CPP Course
 
-In this module i had to learn all the basic from cpp
+In this module i had to learn all the basic of cpp
 
-- constructor / desctructor
-- how to create and optimize class
-- way to use the rigth container
+- Constructor / desctructor
+- How to create and optimize class
+- Way to use the rigth container
+- How to handle error and catch them
+- How to make clean code
